@@ -1,10 +1,11 @@
 import React from 'react';
+import { withRouter} from 'react-router-dom';
 
 import './menu-item.styles.scss';
 
-const MenuItem = ({title, imageUrl, size}) => ( //props의  title을 가져옴.
+const MenuItem = ({title, imageUrl, size, history, linkUrl, match }) => ( //props의  title을 가져옴.
   <div 
-  className={`${size} menu-item`}>
+  className={`${size} menu-item`} onClick={()=> history.push(`${match.url}${linkUrl}`)}>
     <div className='background-image'style={{
     backgroundImage: `url(${imageUrl})`
   }} />
@@ -16,4 +17,4 @@ const MenuItem = ({title, imageUrl, size}) => ( //props의  title을 가져옴.
 );
 
 
-export default MenuItem;
+export default withRouter(MenuItem);
